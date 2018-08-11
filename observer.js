@@ -1,16 +1,22 @@
 class Observer {
 
 
-  constructor(x, y)
+  // constructor()
+  // {
+  //   this.x = width/2;
+  //   this.y = height/2;
+  // }
+
+  constructor(x,y)
   {
-    this.x = width/2;
-    this.y = height/2;
+    this.x = x;
+    this.y = y;
   }
 
   show()
   {
     stroke(255,0,0);
-    strokeWeight(15);
+    strokeWeight(10);
     point(this.x,this.y);
   }
 
