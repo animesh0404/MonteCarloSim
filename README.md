@@ -2,4 +2,4 @@
 This is a fun little project where I'll be writing a MonteCarlo Simulator.
 Just for Experimental Purposes.
 
-[link] You Can See this live in action here: https://animesh0404.github.io/MonteCarloSim/
+You Can See this live in action here: https://animesh0404.github.io/MonteCarloSim/
