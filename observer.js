@@ -6,6 +6,9 @@ class Observer {
     this.y = y;
     this.c = c;
   }
+//getters
+  gety() { return this.y; }
+  getx() { return this.x; }
 
   show()
   {
@@ -14,6 +17,10 @@ class Observer {
     point(this.x,this.y);
   }
 
+  remove()
+  {
+
+  }
   move(dir)
   {
 
