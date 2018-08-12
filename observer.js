@@ -1,12 +1,5 @@
 class Observer {
 
-
-  // constructor()
-  // {
-  //   this.x = width/2;
-  //   this.y = height/2;
-  // }
-
   constructor(x,y,c)
   {
     this.x = x;
