@@ -1,13 +1,13 @@
 let gw; //Grid Width
 let gh; //Grid Height
 let obs = [];
-let n=10,shade = 2,cell=10;
+let n=100,shade = 2,cell=10;
 let xEnd,yEnd;
 
 function setup(){
   createCanvas(900,900);
   background(255);
-  frameRate(5);
+  //frameRate(5);
   gw = width / cell;
   gh = height / cell;
   xEnd = width - gw;
@@ -30,14 +30,14 @@ function setup(){
 function draw(){
   background(255);
   drawGrid();
-  for(let i=0;i < obs.length;i++){
-    if(obs[i].getx() == xEnd && obs[i].gety() == yEnd){
-    obs.splice(i,1);
+  for(observer of obs){
+    if(observer.getx() == xEnd && observer.gety() == yEnd){
+    obs.splice(obs.indexOf(observer),1);
     }
-    obs[i].show();
-    obs[i].move(floor(random(1,5)));
+    observer.show();
+    observer.move(floor(random(1,5)));
   }
-  console.log(obs.length);
+  console.log(obs.length)
 }
 
 function drawGrid(){
