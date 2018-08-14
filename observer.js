@@ -14,7 +14,7 @@ class Observer {
   show()
   {
     stroke(this.c.r,this.c.g,this.c.b);
-    strokeWeight(10);
+    strokeWeight(5);
     point(this.x,this.y);
   }
 
