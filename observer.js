@@ -6,21 +6,18 @@ class Observer {
     this.y = y;
     this.c = c;
   }
+
 //getters
-  gety() { return this.y; }
-  getx() { return this.x; }
+  getY() { return this.y; }
+  getX() { return this.x; }
 
   show()
   {
     stroke(this.c.r,this.c.g,this.c.b);
-    strokeWeight(10);
+    strokeWeight(5);
     point(this.x,this.y);
   }
 
-  remove()
-  {
-
-  }
   move(dir)
   {
 
