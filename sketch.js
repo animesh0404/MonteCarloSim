@@ -1,42 +1,52 @@
 let gw; //Grid Width
 let gh; //Grid Height
 let obs = [];
-let n=10,cell=102;
+let n=10,cell=52;
 let sinks = [];
 let rslider,gslider,bslider,button,RedP,gridB;
+let fps = 60;
 
 function setup(){
   createCanvas(800,800);
   background(255);
-  //frameRate(5);
   RedP = createP('');
   rslider = createSlider(0,255,10);
   gslider = createSlider(0,255,10);
   bslider = createSlider(0,255,10);
   nslider = createSlider(1,100,1);
+  fpsSlider = createSlider(1,60,5);
   n = nslider.value();
   button = createButton("Go");
-  createP('<br><h1> Grid Thickness:');
-  gridB = createSlider(0,10,1);
-
-  gw = width / cell;
-  gh = height / cell;
-  sinks = [ {x:gw, y: gh },              //Top-Left Corner
-            {x:width-gw, y:gh},          //Top-Right Corner
-            {x:width-gw, y:height-gh},   //Bottom-Left Corner
-            {x:gw, y:height-gh} ];    //Bottom-RIght Corner
+  gridP = createP('');
+  gridB = createSlider(0,10,10);
+  gridC = createSlider(2,50,6);
   button.mousePressed(addObservers);
-  // let color = {r:255,g:0,b:0 };
-  // for(let i = 0; i < n; i++) {
-  //  obs[i] = new Observer(width/2,height/2,color);
-  // }
 }
 
 function draw(){
+  fps = fpsSlider.value();
+  frameRate(fps);
+  gw = width / cell;
+  gh = height / cell;
+  sinks = [ {x:gw,       y:gh },              //Top-Left Corner
+            {x:width-gw, y:gh},          //Top-Right Corner
+            {x:width-gw, y:height-gh},   //Bottom-Left Corner
+            {x:gw,       y:height-gh},  ];       //Bottom-RIght Corner
+            // {x:gw,       y:height/2},
+            // {x:width-gw, y:height/2},
+            // {x:width/2,  y:gh},
+            // {x:width/2,  y:height-gh}];
   background(255);
   drawGrid();
   drawSinks();
-  RedP.html('<h1 class="indent">Red:'+ rslider.value() + ' Green:' + gslider.value() + ' Blue:' + bslider.value() + ' Number:' + nslider.value() +' Alive:' + obs.length + ' </h1>');
+  RedP.html('<h2 class="indent">Red:'+ rslider.value()
+                          + ' Green:' + gslider.value()
+                          + ' Blue:' + bslider.value()
+                          + ' Number:' + nslider.value()
+                          +' Fps:'+ fpsSlider.value()
+                          +'  Alive:'+obs.length     + ' </h2>');
+  gridP.html('<h2 class="indent"> Grid Thickness:'+ gridB.value()
+                          +' Grid Cells:'+ pow((gridC.value()*2 - 2),2) + ' </h2>');
   //createP('<br> Red:' + rslider.value() + ' :' + rslider.value() + ' Green:' + gslider.value());
   for(let i=obs.length-1;i>=0;i--){
    obs[i].move(floor(random(1,5)));
@@ -63,6 +73,7 @@ function addObservers(){
 }
 
 function drawGrid(){
+  cell = gridC.value() * 2;
   for(var i=gw;i<width;i+=gw)
   {
     strokeWeight(gridB.value() * 0.1);
