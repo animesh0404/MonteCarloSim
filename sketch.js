@@ -10,9 +10,9 @@ function setup(){
   createCanvas(800,800);
   background(255);
   RedP = createP('');
-  rslider = createSlider(0,255,10);
-  gslider = createSlider(0,255,10);
-  bslider = createSlider(0,255,10);
+  rslider = createSlider(0,255,255);
+  gslider = createSlider(0,255,0);
+  bslider = createSlider(0,255,0);
   nslider = createSlider(1,100,1);
   fpsSlider = createSlider(1,60,5);
   n = nslider.value();
