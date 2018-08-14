@@ -14,7 +14,7 @@ class Observer {
   show()
   {
     stroke(this.c.r,this.c.g,this.c.b);
-    strokeWeight(10);
+    strokeWeight(log(30 * map(cell,4,100,50,2)));
     point(this.x,this.y);
   }
 

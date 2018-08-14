@@ -74,6 +74,7 @@ function addObservers(){
 
 function drawGrid(){
   cell = gridC.value() * 2;
+  //console.log(log(30 * map(cell,4,100,50,2)));
   for(var i=gw;i<width;i+=gw)
   {
     strokeWeight(gridB.value() * 0.1);
