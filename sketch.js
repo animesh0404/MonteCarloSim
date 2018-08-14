@@ -1,7 +1,7 @@
 let gw; //Grid Width
 let gh; //Grid Height
 let obs = [];
-let n=100,cell=22;
+let n=100,cell=12;
 let sinks = [];
 
 function setup(){
@@ -40,10 +40,18 @@ function draw(){
   //noLoop();
 }
 
+function mouseClicked(){
+  let color = {r:255,g:0,b:0 };
+  for(let i = 0; i < n; i++) {
+   obj = new Observer(width/2,height/2,color);
+   obs.push(obj);
+  }
+}
+
 function drawGrid(){
   for(var i=gw;i<width;i+=gw)
   {
-    strokeWeight(0);
+    strokeWeight(1);
     stroke(0);
     line(i,gh,i,height - gh);
     line(gw,i,width - gw,i);
