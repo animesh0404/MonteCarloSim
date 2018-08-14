@@ -3,17 +3,21 @@ let gh; //Grid Height
 let obs = [];
 let n=10,cell=102;
 let sinks = [];
-let rslider,gslider,bslider,button;
+let rslider,gslider,bslider,button,RedP,gridB;
 
 function setup(){
   createCanvas(800,800);
   background(255);
   //frameRate(5);
-  createP('<br><h1>Red&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBlue&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGreen</h1>');
-  rslider = createSlider(10,255,10);
-  gslider = createSlider(10,255,10);
-  bslider = createSlider(10,255,10);
+  RedP = createP('');
+  rslider = createSlider(0,255,10);
+  gslider = createSlider(0,255,10);
+  bslider = createSlider(0,255,10);
+  nslider = createSlider(1,100,1);
+  n = nslider.value();
   button = createButton("Go");
+  createP('<br><h1> Grid Thickness:');
+  gridB = createSlider(0,10,1);
 
   gw = width / cell;
   gh = height / cell;
@@ -32,7 +36,8 @@ function draw(){
   background(255);
   drawGrid();
   drawSinks();
-  //createP('<br> Red:' + rslider.value() + ' Blue:' + rslider.value() + ' Green:' + gslider.value());
+  RedP.html('<h1 class="indent">Red:'+ rslider.value() + ' Green:' + gslider.value() + ' Blue:' + bslider.value() + ' Number:' + nslider.value() +' Alive:' + obs.length + ' </h1>');
+  //createP('<br> Red:' + rslider.value() + ' :' + rslider.value() + ' Green:' + gslider.value());
   for(let i=obs.length-1;i>=0;i--){
    obs[i].move(floor(random(1,5)));
    obs[i].show();
@@ -49,6 +54,7 @@ function draw(){
 }
 
 function addObservers(){
+  n = nslider.value();
   let color = {r:rslider.value(),g:gslider.value(),b:bslider.value()};
   for(let i = 0; i < n; i++) {
    obj = new Observer(width/2,height/2,color);
@@ -59,7 +65,7 @@ function addObservers(){
 function drawGrid(){
   for(var i=gw;i<width;i+=gw)
   {
-    strokeWeight(0);
+    strokeWeight(gridB.value() * 0.1);
     stroke(0);
     line(i,gh,i,height - gh);
     line(gw,i,width - gw,i);
